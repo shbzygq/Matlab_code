@@ -2,10 +2,6 @@ clc;
 clear;
 main_Path='H:/project/NUAA/Detectedface/';
 savePath='I:/Face_Liveness_Data/CNN_NUAA/test/fake/';
-% path1=[main_Path 'train/train_pos.txt'];
-% path2=[main_Path 'train/train_neg.txt'];
-% path3=[main_Path 'test/test_pos.txt'];
-% path4=[main_Path 'test/test_neg.txt'];
 path1=[main_Path 'client_train.txt'];
 path2=[main_Path 'imposter_train.txt'];
 path3=[main_Path 'client_test.txt'];
@@ -13,11 +9,10 @@ path4=[main_Path 'imposter_test.txt'];
 
 path={path1,path2,path3,path4};
 i=0;
-for pathIdx=4:4%length(path)
+for pathIdx=1:length(path)
     fid=fopen(path{pathIdx},'r');
-    while feof(fid) ~= 1;
-            name = fgetl(fid);
-            %name = fscanf(fid, '%s',i);
+    while feof(fid) ~= 1;#只要不到文件结束
+            name = fgetl(fid); #从文件中读取一行
             if isempty(name)
                 break;
             end
